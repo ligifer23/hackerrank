@@ -25,13 +25,13 @@ CREATE TABLE LOGRADOUROS
    NO_LOGRADOURO_CEP varchar(8),
    FOREIGN KEY (CD_BAIRRO) REFERENCES bairros(cd_bairro));
 
-CREATE VIEW vw_zipcode AS
-    SELECT l.NO_LOGRADOURO_CEP "id",
-           l.DS_LOGRADOURO_NOME "street",
-           b.ds_bairro_nome "district",
-           c.ds_cidade_nome "city",
-           u.ds_uf_sigla "state"
-    FROM   LOGRADOUROS l
-    JOIN   bairros b  ON  l.CD_BAIRRO = b.cd_bairro
-    JOIN   cidades c  ON  b.cd_cidade = c.cd_cidade
-    JOIN   uf u       ON  c.cd_uf = u.cd_uf;
+--CREATE VIEW vw_zipcode AS
+--    SELECT l.NO_LOGRADOURO_CEP "id",
+--           l.DS_LOGRADOURO_NOME "street",
+--           b.ds_bairro_nome "district",
+--           c.ds_cidade_nome "city",
+--           u.ds_uf_sigla "state"
+--    FROM   LOGRADOUROS l
+--    JOIN   bairros b  ON  l.CD_BAIRRO = b.cd_bairro
+--    JOIN   cidades c  ON  b.cd_cidade = c.cd_cidade
+--    JOIN   uf u       ON  c.cd_uf = u.cd_uf;

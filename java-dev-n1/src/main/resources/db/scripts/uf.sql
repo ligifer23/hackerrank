@@ -1,3 +1,1 @@
-INSERT INTO uf
- (cd_uf, ds_uf_sigla, ds_uf_nome)
-VALUES (26, 'SP', 'São Paulo');
+INSERT INTO uf (cd_uf, ds_uf_sigla, ds_uf_nome) VALUES (26, 'SP', 'Sï¿½o Paulo');

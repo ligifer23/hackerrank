@@ -30,17 +30,17 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     private static final String SCRIPTS_BASE = "db/scripts/";
 
-    @Bean(destroyMethod = "shutdown")
+    @Bean(destroyMethod = "close")
     public DataSource dataSource() {
 	    return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .setName("zipcode")
                 .addScripts(SCRIPTS_BASE.concat("schema.sql"),
-                        SCRIPTS_BASE.concat("uf.sql"),
-                        SCRIPTS_BASE.concat("cidades.sql"),
-                        SCRIPTS_BASE.concat("bairros.sql"),
-                        SCRIPTS_BASE.concat("rua.sql"))
-                        .build();
+                            SCRIPTS_BASE.concat("uf.sql"),
+                            SCRIPTS_BASE.concat("cidades.sql"),
+                            SCRIPTS_BASE.concat("bairros.sql")/*,
+                            SCRIPTS_BASE.concat("rua.sql")*/)
+                .build();
     }
 
     @Bean
