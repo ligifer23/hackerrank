@@ -9,6 +9,5 @@ import org.springframework.data.repository.Repository;
  */
 
 public interface ZipCodeRepository extends Repository<ZipCode, String>{
-    @Query(value = "SELECT * FROM vw_zipcode WHERE id = ?", nativeQuery = true)
     ZipCode findById(String zipCode);
 }

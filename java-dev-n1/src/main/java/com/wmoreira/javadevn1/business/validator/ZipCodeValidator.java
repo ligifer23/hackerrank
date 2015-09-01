@@ -10,15 +10,12 @@ import java.util.regex.Pattern;
 
 public class ZipCodeValidator {
 
-    public static String unmaskAndValidate(String zipCode) {
-        String zipUnmasked = zipCode.replace("-", "");
+    public static void unmaskAndValidate(String zipCode) {
         Pattern zipPattern = Pattern.compile("^[0-9]{8}");
-        boolean matches = zipPattern.matcher(zipUnmasked).matches();
+        boolean matches = zipPattern.matcher(zipCode).matches();
 
         if (!matches) {
-            throw new BadRequestException("Invalid zip code! Allowed formats: 00000-000|00000000");
+            throw new BadRequestException("CEP inválido. O mesmo deverá ser numérico e possuir 8 dígitos.");
         }
-
-        return zipUnmasked;
     }
 }

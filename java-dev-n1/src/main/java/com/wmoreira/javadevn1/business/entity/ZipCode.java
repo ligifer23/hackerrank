@@ -14,15 +14,15 @@ import javax.persistence.Table;
 public class ZipCode {
     private static final long serialVersionUID = 8199967229715812072L;
     @Id
-    @Column(name = "id")
+    @Column
     private String id;
-    @Column(name = "street")
+    @Column
     private String street;
-    @Column(name = "district")
+    @Column
     private String district;
-    @Column(name = "city")
+    @Column
     private String city;
-    @Column(name = "state")
+    @Column
     private String state;
 
     public ZipCode() {

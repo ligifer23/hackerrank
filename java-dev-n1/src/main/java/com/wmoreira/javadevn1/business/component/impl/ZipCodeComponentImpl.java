@@ -18,9 +18,10 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
     private ZipCodeRepository zipCodeRepository;
 
     public ZipCode findById(String zipCode) {
-        StringBuilder auxZip = new StringBuilder(ZipCodeValidator.unmaskAndValidate(zipCode));
+        ZipCodeValidator.unmaskAndValidate(zipCode);
+        StringBuilder auxZip = new StringBuilder(zipCode);
 
-        for (int i = zipCode.length(); i > 0; i--) {
+        for (int i = auxZip.length(); i > 0; i--) {
             ZipCode zip = zipCodeRepository.findById(auxZip.toString());
 
             if (zip != null) {
@@ -31,5 +32,9 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
         }
 
         throw new NotFoundException();
+    }
+
+    void setZipCodeRepository(ZipCodeRepository zipCodeRepository) {
+        this.zipCodeRepository = zipCodeRepository;
     }
 }

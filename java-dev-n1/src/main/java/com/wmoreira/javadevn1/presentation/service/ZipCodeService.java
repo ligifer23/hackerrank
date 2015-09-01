@@ -26,10 +26,13 @@ public class ZipCodeService {
         try {
             return ResponseEntity.ok(zipCodeComponent.findById(id));
         } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).build();
+            return ResponseEntity.status(aex.getStatus()).body(Error.of(aex.getStatus(), aex.getMessage()));
         } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Error.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
 
+    void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {
+        this.zipCodeComponent = zipCodeComponent;
+    }
 }
