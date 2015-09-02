@@ -1,23 +1,13 @@
 package com.wmoreira.javadevn1.presentation.service;
 
-import com.wmoreira.javadevn1.business.component.AdressComponent;
-import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
-import com.wmoreira.javadevn1.business.entity.Address;
-import com.wmoreira.javadevn1.exception.APIException;
-import com.wmoreira.javadevn1.presentation.service.error.APIError;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 /**
  * @author wellington.362@gmail.com
  */
-
+/*
 @RestController
 public class AddressService {
 
-    @Autowired
+    //@Autowired
     AdressComponent addressComponent;
 
     @RequestMapping(value = "/address/{ID}",
@@ -80,4 +70,4 @@ public class AddressService {
     void setAddressComponent(AdressComponent addressComponent) {
         this.addressComponent = addressComponent;
     }
-}
+}*/
