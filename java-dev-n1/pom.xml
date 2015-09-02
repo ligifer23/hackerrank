@@ -20,6 +20,13 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.2.5.RELEASE</version>
     </parent>
+    <repositories>
+        <repository>
+            <id>third-party</id>
+            <name>third-party</name>
+            <url>file://${project.basedir}/repo</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -69,6 +76,14 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.10.Final</version>
+        </dependency>
+        <dependency>
+            <!-- Lib que desenvolvi para facilitar o desenvolvimento de RESTFul APIs-->
+            <groupId>org.wmoreira</groupId>
+            <artifactId>rest-api-essentials</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/repo/rest-api-essentials-0.0.2-SNAPSHOT.jar</systemPath>-->
         </dependency>
         <dependency>
             <groupId>com.h2database</groupId>

@@ -1,6 +1,7 @@
 package com.wmoreira.javadevn1.presentation.service;
 
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
+import com.wmoreira.javadevn1.business.entity.ZipCode;
 import com.wmoreira.javadevn1.exception.APIException;
 import com.wmoreira.javadevn1.presentation.service.error.APIError;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,8 @@ public class ZipCodeService {
     @RequestMapping(value = "/cep/{ID}",
                     method = RequestMethod.GET,
                     produces = "application/json")
-    public ResponseEntity find(@PathVariable("ID") String id) {
-        try {
-            return ResponseEntity.ok(zipCodeComponent.find(id));
-        } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
-        } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIError.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
+    public ZipCode find(@PathVariable("ID") String id) {
+        return zipCodeComponent.find(id);
     }
 
     void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {

@@ -1,10 +1,13 @@
 package com.wmoreira.javadevn1.config;
 
+import org.springframework.boot.context.embedded.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.wmoreira.api.core.exception.filter.ExceptionHandlingFilter;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -30,5 +33,15 @@ public class WebInitializer implements WebApplicationInitializer {
         ServletRegistration.Dynamic dispatcher = container.addServlet("dispatcher", new DispatcherServlet(dispatcherContext));
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
+    }
+
+    @Bean
+    public FilterRegistrationBean exceptionHandlingFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ExceptionHandlingFilter());
+        registration.addUrlPatterns("/*");
+        registration.setMatchAfter(false);
+        registration.setName("exceptionHandlingFilter");
+        return registration;
     }
 }
