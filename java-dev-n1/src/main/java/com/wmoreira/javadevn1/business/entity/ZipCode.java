@@ -8,6 +8,7 @@ import javax.persistence.Table;
 /**
  * @author wellington.362@gmail.com
  */
+
 @Entity
 @Table(name = "vw_zipcode")
 @SuppressWarnings("serial")

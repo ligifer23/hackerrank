@@ -33,10 +33,10 @@ public class ZipCodeServiceUnitTest {
         //Given
         String zip = "01254600";
         ZipCode zipCode = new ZipCode("01254600","street", "district", "city", "state");
-        Mockito.when(component.findById(zip)).thenReturn(zipCode);
+        Mockito.when(component.find(zip)).thenReturn(zipCode);
 
         //When
-        ResponseEntity<ZipCode> response = instance.findById(zip);
+        ResponseEntity<ZipCode> response = instance.find(zip);
 
         //Then
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
@@ -50,10 +50,10 @@ public class ZipCodeServiceUnitTest {
         NotFoundException notFound = new NotFoundException(excMessage);
         APIError expectedError = APIError.of(notFound.getStatus(), excMessage);
 
-        Mockito.when(component.findById(Matchers.anyString())).thenThrow(notFound);
+        Mockito.when(component.find(Matchers.anyString())).thenThrow(notFound);
 
         //When
-        ResponseEntity<APIError> response = instance.findById("01254600");
+        ResponseEntity<APIError> response = instance.find("01254600");
 
         //Then
         Assert.assertEquals(HttpStatus.valueOf(notFound.getStatus()), response.getStatusCode());
@@ -67,10 +67,10 @@ public class ZipCodeServiceUnitTest {
         BadRequestException badRequest = new BadRequestException(excMessage);
         APIError expectedError = APIError.of(badRequest.getStatus(), excMessage);
 
-        Mockito.when(component.findById(Matchers.anyString())).thenThrow(badRequest);
+        Mockito.when(component.find(Matchers.anyString())).thenThrow(badRequest);
 
         //When
-        ResponseEntity<APIError> response = instance.findById("01254600");
+        ResponseEntity<APIError> response = instance.find("01254600");
 
         //Then
         Assert.assertEquals(HttpStatus.valueOf(badRequest.getStatus()), response.getStatusCode());
@@ -84,10 +84,10 @@ public class ZipCodeServiceUnitTest {
         InternalServerErrorException internalServerError = new InternalServerErrorException(excMessage);
         APIError expectedError = APIError.of(internalServerError.getStatus(), excMessage);
 
-        Mockito.when(component.findById(Matchers.anyString())).thenThrow(internalServerError);
+        Mockito.when(component.find(Matchers.anyString())).thenThrow(internalServerError);
 
         //When
-        ResponseEntity<APIError> response = instance.findById("01254600");
+        ResponseEntity<APIError> response = instance.find("01254600");
 
         //Then
         Assert.assertEquals(HttpStatus.valueOf(internalServerError.getStatus()), response.getStatusCode());
@@ -100,10 +100,10 @@ public class ZipCodeServiceUnitTest {
         InternalServerErrorException internalServerErrorException = new InternalServerErrorException();
         APIError expectedError = APIError.of(internalServerErrorException.getStatus());
 
-        Mockito.when(component.findById(Matchers.anyString())).thenThrow(new InternalServerErrorException());
+        Mockito.when(component.find(Matchers.anyString())).thenThrow(new InternalServerErrorException());
 
         //When
-        ResponseEntity<APIError> response = instance.findById("01254600");
+        ResponseEntity<APIError> response = instance.find("01254600");
 
         //Then
         Assert.assertEquals(HttpStatus.valueOf(internalServerErrorException.getStatus()), response.getStatusCode());

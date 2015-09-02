@@ -21,7 +21,7 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
     @Autowired
     private ZipCodeRepository zipCodeRepository;
 
-    public ZipCode findById(String zipCode) {
+    public ZipCode find(String zipCode) {
 
         if (!ZipCodeValidator.validate(zipCode)) {
             throw new BadRequestException("CEP inválido. O mesmo deverá ser numérico e possuir 8 dígitos.");
@@ -45,7 +45,7 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
             return lastOptZip.get();
         }
 
-        throw new NotFoundException();
+        throw new NotFoundException("CEP não encontrado!");
     }
 
     void setZipCodeRepository(ZipCodeRepository zipCodeRepository) {

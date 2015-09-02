@@ -14,6 +14,13 @@ $mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,s
 ###URI
 GET - **/cep/{ID}** - onde ID é o CEP no formato 00000000 (size 8)
 
+##Exercício 2 - Salvar endereço do usuário seguindo as regras de CRUD
+
+###URI
+
+##Observações
+- As tabelas uf, cidades, bairros e rua foram criadas a partir de um dump encontrado na internet
+
 ##Explicação
 
 ####Camadas da aplicação

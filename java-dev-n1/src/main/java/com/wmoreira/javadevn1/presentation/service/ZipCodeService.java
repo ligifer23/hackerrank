@@ -24,9 +24,9 @@ public class ZipCodeService {
     @RequestMapping(value = "/cep/{ID}",
                     method = RequestMethod.GET,
                     produces = "application/json")
-    public ResponseEntity findById(@PathVariable("ID") String id) {
+    public ResponseEntity find(@PathVariable("ID") String id) {
         try {
-            return ResponseEntity.ok(zipCodeComponent.findById(id));
+            return ResponseEntity.ok(zipCodeComponent.find(id));
         } catch (APIException aex) {
             return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
         } catch (Exception exc) {
