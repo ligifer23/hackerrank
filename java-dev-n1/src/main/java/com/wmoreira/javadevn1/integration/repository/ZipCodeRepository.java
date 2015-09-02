@@ -1,7 +1,6 @@
 package com.wmoreira.javadevn1.integration.repository;
 
 import com.wmoreira.javadevn1.business.entity.ZipCode;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 
 /**
