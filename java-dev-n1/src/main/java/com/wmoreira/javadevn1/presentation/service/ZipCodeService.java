@@ -26,6 +26,6 @@ public class ZipCodeService {
                     method = RequestMethod.GET,
                     produces = "application/json")
     public ZipCode find(@PathVariable("ID") String id) {
-        return zipCodeComponent.find(id);
+        return zipCodeComponent.lookup(id);
     }
 }

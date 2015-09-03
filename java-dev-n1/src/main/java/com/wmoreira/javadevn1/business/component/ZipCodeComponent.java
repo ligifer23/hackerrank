@@ -7,4 +7,5 @@ import com.wmoreira.javadevn1.business.entity.ZipCode;
  */
 public interface ZipCodeComponent {
     ZipCode find(String zipCode);
+    ZipCode lookup(String zipCode);
 }

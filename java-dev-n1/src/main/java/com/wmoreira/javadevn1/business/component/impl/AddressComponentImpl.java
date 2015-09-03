@@ -3,8 +3,6 @@ package com.wmoreira.javadevn1.business.component.impl;
 import com.wmoreira.javadevn1.business.component.AddressComponent;
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.Address;
-import com.wmoreira.javadevn1.business.validator.DefaultValidator;
-import com.wmoreira.javadevn1.business.validator.ValidatorResolver;
 import com.wmoreira.javadevn1.integration.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,7 +22,6 @@ class AddressComponentImpl implements AddressComponent {
 
     ZipCodeComponent zipCodeComponent;
     AddressRepository addressRepository;
-    ValidatorResolver validator;
 
     @Autowired
     void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {
@@ -34,11 +31,6 @@ class AddressComponentImpl implements AddressComponent {
     @Autowired
     void setAddressRepository(AddressRepository addressRepository) {
         this.addressRepository = addressRepository;
-    }
-
-    @Autowired
-    void setValidator(ValidatorResolver validator) {
-        this.validator = validator;
     }
 
     @Override
@@ -57,8 +49,6 @@ class AddressComponentImpl implements AddressComponent {
         if (address.getId() != null) {
             find(address.getId());
         }
-
-        validator.validate(address);
 
         try {
             zipCodeComponent.find(address.getZipCode());

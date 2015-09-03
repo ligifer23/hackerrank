@@ -25,30 +25,32 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
         this.zipCodeRepository = zipCodeRepository;
     }
 
+    @Override
     public ZipCode find(String zipCode) {
-
         if (!ZipCodeValidator.validate(zipCode)) {
             throw new BadRequestException("CEP inválido. O mesmo deverá ser numérico e possuir 8 dígitos.");
         }
 
-        StringBuilder auxZip = new StringBuilder(zipCode);
+        Optional<ZipCode> optZip = Optional.ofNullable(zipCodeRepository.findById(zipCode));
 
-        for (int i = auxZip.length()-1; i >= 0; i--) {
-            Optional<ZipCode> optZip = Optional.ofNullable(zipCodeRepository.findById(auxZip.toString()));
-
-            if (optZip.isPresent()) {
-                return optZip.get();
-            }
-
-            auxZip.setCharAt(i, '0');
-        }
-
-        Optional<ZipCode> lastOptZip = Optional.ofNullable(zipCodeRepository.findById(auxZip.toString()));
-
-        if (lastOptZip.isPresent()) {
-            return lastOptZip.get();
+        if (optZip.isPresent()) {
+            return optZip.get();
         }
 
         throw new NotFoundException("CEP não encontrado!");
+    }
+
+    public ZipCode lookup(String zipCode) {
+        StringBuilder auxZip = new StringBuilder(zipCode);
+
+        for (int i = auxZip.length()-1; i >= 0; i--) {
+            try {
+                return find(auxZip.toString());
+            } catch (NotFoundException nfe) {
+                auxZip.setCharAt(i, '0');
+            }
+        }
+
+        return find(auxZip.toString());
     }
 }

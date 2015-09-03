@@ -45,7 +45,7 @@ public class ZipCodeComponentImplUnitTest {
     }
 
     @Test
-    public void testFindSuccessCaseLookup1() {
+    public void testLookupSuccess1Padding() {
 	//Given
         String lookupZip = "12345670";
 	String zip = "12345678";
@@ -55,11 +55,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup2() {
+    public void testLookupSuccess2Paddings() {
 	//Given
 	String lookupZip = "12345600";
 	String zip = "12345678";
@@ -69,11 +69,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup3() {
+    public void testLookupSuccessCase3Paddings() {
 	//Given
 	String lookupZip = "12345000";
 	String zip = "12345678";
@@ -83,11 +83,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup4() {
+    public void testLookupSuccessCase4Paddings() {
 	//Given
 	String lookupZip = "12340000";
 	String zip = "12345678";
@@ -97,11 +97,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup5() {
+    public void testLookupSuccessCase5Paddings() {
 	//Given
 	String lookupZip = "12300000";
 	String zip = "12345678";
@@ -111,11 +111,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup6() {
+    public void testLookupSuccessCase6Paddings() {
 	//Given
 	String lookupZip = "12000000";
 	String zip = "12345678";
@@ -125,11 +125,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup7() {
+    public void testLookupSuccessCase7Paddings() {
 	//Given
 	String lookupZip = "10000000";
 	String zip = "12345678";
@@ -139,11 +139,11 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
-    public void testFindSuccessCaseLookup8() {
+    public void testLookupSuccessCase8Paddings() {
 	//Given
 	String lookupZip = "00000000";
 	String zip = "12345678";
@@ -153,6 +153,6 @@ public class ZipCodeComponentImplUnitTest {
 	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.find(zip));
+	Assert.assertEquals(zipCode, instance.lookup(zip));
     }
 }

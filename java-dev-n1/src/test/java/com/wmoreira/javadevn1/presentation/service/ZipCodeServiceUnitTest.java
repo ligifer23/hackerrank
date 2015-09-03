@@ -30,7 +30,7 @@ public class ZipCodeServiceUnitTest {
         //Given
         String zip = "01254600";
         ZipCode zipCode = new ZipCode("01254600","street", "district", "city", "state");
-        Mockito.when(component.find(zip)).thenReturn(zipCode);
+        Mockito.when(component.lookup(zip)).thenReturn(zipCode);
 
         //When
         ZipCode response = instance.find(zip);
@@ -45,7 +45,7 @@ public class ZipCodeServiceUnitTest {
         String excMessage = "not found...";
         NotFoundException notFound = new NotFoundException(excMessage);
 
-        Mockito.when(component.find(Matchers.anyString())).thenThrow(notFound);
+        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(notFound);
 
         //When
         instance.find("01254600");
@@ -57,7 +57,7 @@ public class ZipCodeServiceUnitTest {
         String excMessage = "bad request...";
         BadRequestException badRequest = new BadRequestException(excMessage);
 
-        Mockito.when(component.find(Matchers.anyString())).thenThrow(badRequest);
+        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(badRequest);
 
         //When
         instance.find("01254600");
@@ -66,7 +66,7 @@ public class ZipCodeServiceUnitTest {
     @Test(expected = InternalServerErrorException.class)
     public void testFindByIdCaseInternalServerError() {
         //Given
-        Mockito.when(component.find(Matchers.anyString())).thenThrow(new InternalServerErrorException());
+        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(new InternalServerErrorException());
 
         //When
         instance.find("01254600");

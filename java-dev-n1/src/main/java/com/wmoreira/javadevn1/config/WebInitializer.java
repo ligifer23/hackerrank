@@ -1,5 +1,6 @@
 package com.wmoreira.javadevn1.config;
 
+import com.wmoreira.javadevn1.presentation.service.filter.ConstraintViolationFilter;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -42,6 +43,16 @@ public class WebInitializer implements WebApplicationInitializer {
         registration.addUrlPatterns("/*");
         registration.setMatchAfter(false);
         registration.setName("exceptionHandlingFilter");
+        return registration;
+    }
+
+    @Bean
+    public FilterRegistrationBean constraintViolationFilter() {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(new ConstraintViolationFilter());
+        registration.addUrlPatterns("/*");
+        registration.setMatchAfter(true);
+        registration.setName("constraintViolationFilter");
         return registration;
     }
 }

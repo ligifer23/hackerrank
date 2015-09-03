@@ -1,9 +1,6 @@
 package com.wmoreira.javadevn1.config;
 
-import com.wmoreira.javadevn1.business.validator.DefaultValidator;
-import com.wmoreira.javadevn1.business.validator.ValidatorResolver;
 import org.hibernate.validator.HibernateValidator;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +10,6 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaDialect;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.sql.DataSource;
@@ -24,6 +20,7 @@ import javax.validation.ValidatorFactory;
 /**
  * @author wellington.362@gmail.com
  */
+
 @Configuration
 @ComponentScan(basePackages = "com.wmoreira.javadevn1")
 @EnableJpaRepositories(basePackages = "com.wmoreira.javadevn1.integration")
@@ -39,11 +36,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     @Bean(name = "validator")
     public Validator validator() {
         return validatorFactory().getValidator();
-    }
-
-    @Bean
-    public ValidatorResolver defaultValidator() {
-        return new DefaultValidator();
     }
 
     @Bean(destroyMethod = "shutdown")
