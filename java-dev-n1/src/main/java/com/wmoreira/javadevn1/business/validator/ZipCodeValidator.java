@@ -10,6 +10,6 @@ public class ZipCodeValidator {
 
     public static boolean validate(String zipCode) {
         Pattern zipPattern = Pattern.compile("^[0-9]{8}");
-        return zipPattern.matcher(zipCode).matches();
+        return zipCode == null ? false : zipPattern.matcher(zipCode).matches();
     }
 }

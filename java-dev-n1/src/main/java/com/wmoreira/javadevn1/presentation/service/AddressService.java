@@ -1,73 +1,65 @@
 package com.wmoreira.javadevn1.presentation.service;
 
+import com.wmoreira.javadevn1.business.component.AddressComponent;
+import com.wmoreira.javadevn1.business.entity.Address;
+import com.wmoreira.javadevn1.presentation.service.tool.ServiceUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 /**
  * @author wellington.362@gmail.com
  */
-/*
+
 @RestController
 public class AddressService {
 
-    //@Autowired
-    AdressComponent addressComponent;
+    @Autowired
+    AddressComponent addressComponent;
 
-    @RequestMapping(value = "/address/{ID}",
+    @RequestMapping(value = "/endereco/{ID}",
                     method = RequestMethod.GET,
                     produces = "application/json")
-    public ResponseEntity find(@PathVariable("ID") long id) {
-        try {
-            return ResponseEntity.ok(addressComponent.find(id));
-        } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
-        } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIError.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
+    public Address find(@PathVariable("ID") long id) {
+        return addressComponent.find(id);
     }
 
-    @RequestMapping(value = "/address",
-            method = RequestMethod.POST,
-            produces = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity create(@RequestBody Address address) {
-        try {
-            return ResponseEntity.ok(addressComponent.create(address));
-        } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
-        } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIError.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
+    @RequestMapping(value = "/endereco",
+                    method = RequestMethod.POST,
+                    produces = "application/json")
+    public ResponseEntity<Address> create(HttpServletRequest request, @RequestBody Address address) throws URISyntaxException {
+        address.setId(null);
+        Address newAddress = addressComponent.save(address);
+        String location = new StringBuilder(ServiceUtils.buildLocationFromRequest(request))
+                                .append("/endereco/")
+                                .append(newAddress.getId())
+                                .toString();
+
+        return ResponseEntity.created(new URI(location))
+                             .body(newAddress);
     }
 
-    @RequestMapping(value = "/address/{ID}",
-            method = RequestMethod.PUT,
-            produces = "application/json")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity update(@PathVariable("ID") long id, @RequestBody Address address) {
-        try {
-            //TODO: setId
-            addressComponent.update(address);
-            return ResponseEntity.ok().build();
-        } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
-        } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIError.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
+    @RequestMapping(value = "/endereco/{ID}",
+                    method = RequestMethod.PUT,
+                    produces = "application/json")
+    public Address update(@PathVariable("ID") long id, @RequestBody Address address) {
+        address.setId(id);
+        return addressComponent.save(address);
     }
 
-    @RequestMapping(value = "/address/{ID}",
-            method = RequestMethod.DELETE,
-            produces = "application/json")
-    public ResponseEntity delete(@PathVariable("ID") long id) {
-        try {
-            addressComponent.delete(id);
-            return ResponseEntity.ok().build();
-        } catch (APIException aex) {
-            return ResponseEntity.status(aex.getStatus()).body(APIError.of(aex.getStatus(), aex.getMessage()));
-        } catch (Exception exc) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(APIError.of(HttpStatus.INTERNAL_SERVER_ERROR.value()));
-        }
+    @RequestMapping(value = "/endereco/{ID}",
+                    method = RequestMethod.DELETE,
+                    produces = "application/json")
+    public void delete(@PathVariable("ID") long id) {
+        addressComponent.delete(id);
     }
 
-    void setAddressComponent(AdressComponent addressComponent) {
+    void setAddressComponent(AddressComponent addressComponent) {
         this.addressComponent = addressComponent;
     }
-}*/
+}

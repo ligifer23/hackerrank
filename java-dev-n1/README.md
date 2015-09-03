@@ -1,4 +1,4 @@
-#Spring Core + Spring Web + Spring Boot + Spring Data + H2 in-memory + [rest-api-essentials](https://github.com/wellingtonmoreira/rest-api-essentials)
+#Spring Core + Spring Web + Spring Boot + Spring Data + Hibernate Validator + [rest-api-essentials](https://github.com/wellingtonmoreira/rest-api-essentials) + H2 in-memory
 * Os ceps disponiveis no in-memory são da cidade de São Paulo (dump de 2012)
 
 ##Run app - port 8080
@@ -10,12 +10,31 @@ $mvn -Dmaven.repo.local=repo spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjd
 
 ##Exercício 1 - Serviço de BUSCA DE CEP
 
-###URI
-GET - **/cep/{ID}** - onde ID é o CEP no formato 00000000 (size 8)
+###URI /cep
+GET - **/cep/{ID}** - Buscar endereço por CEP
 
 ##Exercício 2 - Salvar endereço do usuário seguindo as regras de CRUD
 
-###URI
+###Request Body (Address)
+
+####Exemplo (POST, PUT)
+
+	{
+      "street" : "Rua teste",
+      "number" : 10,
+      "district" : "Bela Vista",
+      "city" : "São Paulo",
+      "state" : "SP",
+      "zipCode" : "02271120"
+    }
+
+###URIs /endereco
+
+GET - **/endereco/{ID}** - Buscar endereço
+POST - **/endereco** - Cadastrar endereço - *Requer body* - Retorna header 'Location'
+PUT - **/endereco/{ID}** - Atualizar endereço - *Requer body*
+DELETE - **/endereco/{ID}** - Deletar endereço
+
 
 ##Observações
 - As tabelas uf, cidades, bairros e rua foram criadas a partir de um dump encontrado na internet

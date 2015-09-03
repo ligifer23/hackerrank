@@ -33,3 +33,13 @@ CREATE VIEW vw_zipcode AS
     JOIN   bairros b  ON  l.CD_BAIRRO = b.cd_bairro
     JOIN   cidades c  ON  b.cd_cidade = c.cd_cidade
     JOIN   uf u       ON  c.cd_uf = u.cd_uf;
+
+CREATE TABLE enderecos
+  (id bigint auto_increment PRIMARY KEY,
+   street varchar(100) NOT NULL,
+   number int NOT NULL,
+   complement varchar(20),
+   district varchar(50),
+   city varchar(50) NOT NULL,
+   state varchar(2) NOT NULL,
+   zipCode varchar(8) NOT NULL);
