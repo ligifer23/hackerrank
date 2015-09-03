@@ -27,7 +27,7 @@ GET - **/cep/{ID}** - onde ID é o CEP no formato 00000000 (size 8)
 Esta aplicação foi desenvolvida no padrão Presentation-Business-Integration, o que faz com que a mesma não tenha um aspecto monolítico, conforme a imagem abaixo descreve:
 
 
-    (...)It's also worth emphasizing that putting behavior into the domain objects should not contradict **the solid approach of using layering to separate domain logic from such things as persistence and presentation responsibilities**. The logic that should be in a domain object is domain logic - validations, calculations, business rules - whatever you like to call it. (There are cases when you make an argument for putting data source or presentation logic in a domain object, but that's orthogonal to my view of anemia.)(...)
+(...)It's also worth emphasizing that putting behavior into the domain objects should not contradict **the solid approach of using layering to separate domain logic from such things as persistence and presentation responsibilities**. The logic that should be in a domain object is domain logic - validations, calculations, business rules - whatever you like to call it. (There are cases when you make an argument for putting data source or presentation logic in a domain object, but that's orthogonal to my view of anemia.)(...)
 
 ![](./readme/img/Diagrama-separacao.png)
 
