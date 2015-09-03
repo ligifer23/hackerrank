@@ -18,8 +18,12 @@ import java.util.Optional;
 @Component
 class ZipCodeComponentImpl implements ZipCodeComponent {
 
-    @Autowired
     private ZipCodeRepository zipCodeRepository;
+
+    @Autowired
+    void setZipCodeRepository(ZipCodeRepository zipCodeRepository) {
+        this.zipCodeRepository = zipCodeRepository;
+    }
 
     public ZipCode find(String zipCode) {
 
@@ -46,9 +50,5 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
         }
 
         throw new NotFoundException("CEP não encontrado!");
-    }
-
-    void setZipCodeRepository(ZipCodeRepository zipCodeRepository) {
-        this.zipCodeRepository = zipCodeRepository;
     }
 }

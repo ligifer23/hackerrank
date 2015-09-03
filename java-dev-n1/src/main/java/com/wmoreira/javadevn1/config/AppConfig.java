@@ -1,6 +1,7 @@
 package com.wmoreira.javadevn1.config;
 
 import com.wmoreira.javadevn1.business.validator.DefaultValidator;
+import com.wmoreira.javadevn1.business.validator.ValidatorResolver;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +42,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     }
 
     @Bean
-    public DefaultValidator defaultValidator() {
+    public ValidatorResolver defaultValidator() {
         return new DefaultValidator();
     }
 

@@ -2,7 +2,6 @@ package com.wmoreira.javadevn1.presentation.service;
 
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.ZipCode;
-import com.wmoreira.javadevn1.presentation.service.error.APIError;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +44,6 @@ public class ZipCodeServiceUnitTest {
         //Given
         String excMessage = "not found...";
         NotFoundException notFound = new NotFoundException(excMessage);
-        APIError expectedError = APIError.of(notFound.getStatus(), excMessage);
 
         Mockito.when(component.find(Matchers.anyString())).thenThrow(notFound);
 
@@ -58,7 +56,6 @@ public class ZipCodeServiceUnitTest {
         //Given
         String excMessage = "bad request...";
         BadRequestException badRequest = new BadRequestException(excMessage);
-        APIError expectedError = APIError.of(badRequest.getStatus(), excMessage);
 
         Mockito.when(component.find(Matchers.anyString())).thenThrow(badRequest);
 

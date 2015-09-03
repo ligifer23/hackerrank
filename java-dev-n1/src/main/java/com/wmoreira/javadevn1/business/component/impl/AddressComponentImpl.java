@@ -4,8 +4,8 @@ import com.wmoreira.javadevn1.business.component.AddressComponent;
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.Address;
 import com.wmoreira.javadevn1.business.validator.DefaultValidator;
+import com.wmoreira.javadevn1.business.validator.ValidatorResolver;
 import com.wmoreira.javadevn1.integration.repository.AddressRepository;
-import com.wmoreira.javadevn1.integration.repository.ZipCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.wmoreira.api.core.exception.APIException;
@@ -22,14 +22,24 @@ import java.util.Arrays;
 @Component
 class AddressComponentImpl implements AddressComponent {
 
-    @Autowired
     ZipCodeComponent zipCodeComponent;
-
-    @Autowired
     AddressRepository addressRepository;
+    ValidatorResolver validator;
 
     @Autowired
-    DefaultValidator validator;
+    void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {
+        this.zipCodeComponent = zipCodeComponent;
+    }
+
+    @Autowired
+    void setAddressRepository(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
+
+    @Autowired
+    void setValidator(ValidatorResolver validator) {
+        this.validator = validator;
+    }
 
     @Override
     public Address find(long id) {

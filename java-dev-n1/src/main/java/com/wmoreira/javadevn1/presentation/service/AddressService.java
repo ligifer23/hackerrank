@@ -19,8 +19,12 @@ import java.net.URISyntaxException;
 @RestController
 public class AddressService {
 
-    @Autowired
     AddressComponent addressComponent;
+
+    @Autowired
+    void setAddressComponent(AddressComponent addressComponent) {
+        this.addressComponent = addressComponent;
+    }
 
     @RequestMapping(value = "/endereco/{ID}",
                     method = RequestMethod.GET,
@@ -57,9 +61,5 @@ public class AddressService {
                     produces = "application/json")
     public void delete(@PathVariable("ID") long id) {
         addressComponent.delete(id);
-    }
-
-    void setAddressComponent(AddressComponent addressComponent) {
-        this.addressComponent = addressComponent;
     }
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author wellington.362@gmail.com
  */
 
-public class ZipCodeValidatorUnitTest {
+public class ZipCodeValidatorResolverUnitTest {
 
     @Test
     public void testValidateCaseValid() {

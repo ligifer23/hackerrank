@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ZipCodeService {
 
-    @Autowired
     ZipCodeComponent zipCodeComponent;
+
+    @Autowired
+    void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {
+        this.zipCodeComponent = zipCodeComponent;
+    }
 
     @RequestMapping(value = "/cep/{ID}",
                     method = RequestMethod.GET,
                     produces = "application/json")
     public ZipCode find(@PathVariable("ID") String id) {
         return zipCodeComponent.find(id);
-    }
-
-    void setZipCodeComponent(ZipCodeComponent zipCodeComponent) {
-        this.zipCodeComponent = zipCodeComponent;
     }
 }
