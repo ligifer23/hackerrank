@@ -13,6 +13,7 @@
         <servlet.version>3.1.0</servlet.version>
         <spring.version>4.1.5.RELEASE</spring.version>
         <spring-data.version>1.8.1.RELEASE</spring-data.version>
+        <maven.repo.local>repo</maven.repo.local>
     </properties>
 
     <parent>
@@ -20,13 +21,6 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.2.5.RELEASE</version>
     </parent>
-    <repositories>
-        <repository>
-            <id>third-party</id>
-            <name>third-party</name>
-            <url>file://${project.basedir}/repo</url>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>

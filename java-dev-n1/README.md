@@ -1,12 +1,11 @@
 #Spring Core + Spring Web + Spring Boot + Spring Data + H2 in-memory
 * Os ceps disponiveis no in-memory são da cidade de São Paulo (dump de 2012)
 
-
 ##Run app - port 8080
-$mvn spring-boot:run
+$mvn -Dmaven.repo.local=repo spring-boot:run
 
 ##Debug app - port 5005
-$mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
+$mvn -Dmaven.repo.local=repo spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
 
 
 ##Exercício 1 - Serviço de BUSCA DE CEP
