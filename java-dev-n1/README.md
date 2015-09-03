@@ -39,7 +39,7 @@ Esta padronização não tem como objetivo separar regras de negócio de suas en
 
 Esta arquitetura auxilia na aplicação de pelo menos 2 princípios [**S**OLI**D**](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) adequadamente:
 -	S - Single-responsibility - Salvos os Components, Services e Repositories não possuem mais de uma responsabilidade.
--	D - Dependency inversion - A implementação dos Components são invisíveis para os Services, assim como as dos Repositories são invisíveis para Components (interface public, implementação package default)
+-	D - Dependency inversion - As implementações de Components são invisíveis para os Services, assim como as dos Repositories são invisíveis para Components (interface public, implementação package default)
 
 ####Spring Core + Spring Web + Spring Data + Spring Boot?
 
