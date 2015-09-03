@@ -111,4 +111,42 @@ public class Address {
     public void setComplement(String complement) {
         this.complement = complement;
     }
+
+    @Override public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+
+        Address address = (Address)o;
+
+        if (id != null ? !id.equals(address.id) : address.id != null)
+            return false;
+        if (street != null ? !street.equals(address.street) : address.street != null)
+            return false;
+        if (number != null ? !number.equals(address.number) : address.number != null)
+            return false;
+        if (complement != null ? !complement.equals(address.complement) : address.complement != null)
+            return false;
+        if (district != null ? !district.equals(address.district) : address.district != null)
+            return false;
+        if (city != null ? !city.equals(address.city) : address.city != null)
+            return false;
+        if (state != null ? !state.equals(address.state) : address.state != null)
+            return false;
+        return !(zipCode != null ? !zipCode.equals(address.zipCode) : address.zipCode != null);
+
+    }
+
+    @Override public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (street != null ? street.hashCode() : 0);
+        result = 31 * result + (number != null ? number.hashCode() : 0);
+        result = 31 * result + (complement != null ? complement.hashCode() : 0);
+        result = 31 * result + (district != null ? district.hashCode() : 0);
+        result = 31 * result + (city != null ? city.hashCode() : 0);
+        result = 31 * result + (state != null ? state.hashCode() : 0);
+        result = 31 * result + (zipCode != null ? zipCode.hashCode() : 0);
+        return result;
+    }
 }

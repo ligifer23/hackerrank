@@ -3,6 +3,7 @@ package com.wmoreira.javadevn1.business.component.impl;
 import com.wmoreira.javadevn1.business.component.AddressComponent;
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.Address;
+import com.wmoreira.javadevn1.business.entity.ZipCode;
 import com.wmoreira.javadevn1.integration.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import org.wmoreira.api.core.exception.UnprocessableEntityException;
 import org.wmoreira.api.core.exception.handler.APIViolation;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * @author wellington.362@gmail.com
@@ -35,13 +37,13 @@ class AddressComponentImpl implements AddressComponent {
 
     @Override
     public Address find(long id) {
-        Address address = addressRepository.findOne(id);
+        Optional<Address> addressOpt = Optional.ofNullable(addressRepository.findOne(id));
 
-        if (address == null) {
+        if (!addressOpt.isPresent()) {
             throw new NotFoundException("Endereço não encontrado!");
         }
 
-        return address;
+        return addressOpt.get();
     }
 
     @Override
@@ -51,11 +53,11 @@ class AddressComponentImpl implements AddressComponent {
         }
 
         try {
-            zipCodeComponent.find(address.getZipCode());
+            ZipCode zipCode = zipCodeComponent.lookup(address.getZipCode());
+            address.setZipCode(zipCode.getId());
         } catch (APIException aex) {
             throw new UnprocessableEntityException(Arrays.asList(APIViolation.of(aex.getMessage())));
         }
-
 
         return addressRepository.save(address);
     }

@@ -33,11 +33,11 @@ class ZipCodeComponentImpl implements ZipCodeComponent {
 
         Optional<ZipCode> optZip = Optional.ofNullable(zipCodeRepository.findById(zipCode));
 
-        if (optZip.isPresent()) {
-            return optZip.get();
+        if (!optZip.isPresent()) {
+            throw new NotFoundException("CEP não encontrado!");
         }
 
-        throw new NotFoundException("CEP não encontrado!");
+        return optZip.get();
     }
 
     public ZipCode lookup(String zipCode) {

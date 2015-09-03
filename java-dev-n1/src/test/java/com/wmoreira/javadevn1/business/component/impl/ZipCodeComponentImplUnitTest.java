@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.wmoreira.api.core.exception.NotFoundException;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 /**
  * @author wellington.362@gmail.com
  */
@@ -15,11 +18,10 @@ import org.wmoreira.api.core.exception.NotFoundException;
 public class ZipCodeComponentImplUnitTest {
 
     ZipCodeComponentImpl instance   = new ZipCodeComponentImpl();
-    ZipCodeRepository    repository = Mockito.mock(ZipCodeRepository.class);
+    ZipCodeRepository    repository = mock(ZipCodeRepository.class);
 
-    @Before
-    public void setUp() {
-	instance.setZipCodeRepository(repository);
+    @Before public void setUp() {
+        instance.setZipCodeRepository(repository);
     }
 
     @Test
@@ -29,10 +31,10 @@ public class ZipCodeComponentImplUnitTest {
         ZipCode zipCode = new ZipCode(zip, "", "", "", "");
 
         //When
-        Mockito.when(repository.findById(zip)).thenReturn(zipCode);
+        when(repository.findById(zip)).thenReturn(zipCode);
 
         //Then
-        Assert.assertEquals(zipCode, instance.find(zip));
+        assertEquals(zipCode, instance.find(zip));
     }
 
     @Test(expected = NotFoundException.class)
@@ -52,10 +54,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -66,10 +68,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -80,10 +82,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -94,10 +96,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -108,10 +110,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -122,10 +124,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -136,10 +138,10 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 
     @Test
@@ -150,9 +152,9 @@ public class ZipCodeComponentImplUnitTest {
 	ZipCode zipCode = new ZipCode(lookupZip, "", "", "", "");
 
 	//When
-	Mockito.when(repository.findById(lookupZip)).thenReturn(zipCode);
+	when(repository.findById(lookupZip)).thenReturn(zipCode);
 
 	//Then
-	Assert.assertEquals(zipCode, instance.lookup(zip));
+	assertEquals(zipCode, instance.lookup(zip));
     }
 }

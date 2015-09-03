@@ -11,6 +11,8 @@ import org.wmoreira.api.core.exception.BadRequestException;
 import org.wmoreira.api.core.exception.InternalServerErrorException;
 import org.wmoreira.api.core.exception.NotFoundException;
 
+import static org.mockito.Mockito.*;
+
 /**
  * @author wellington.362@gmail.com
  */
@@ -18,19 +20,17 @@ import org.wmoreira.api.core.exception.NotFoundException;
 public class ZipCodeServiceUnitTest {
 
     ZipCodeService   instance  = new ZipCodeService();
-    ZipCodeComponent component = Mockito.mock(ZipCodeComponent.class);
+    ZipCodeComponent component = mock(ZipCodeComponent.class);
 
-    @Before
-    public void setUp() {
-	instance.setZipCodeComponent(component);
+    @Before public void setUp() {
+        instance.setZipCodeComponent(component);
     }
 
-    @Test
-    public void testFindByIdSuccess() {
+    @Test public void testFindSuccess() {
         //Given
         String zip = "01254600";
-        ZipCode zipCode = new ZipCode("01254600","street", "district", "city", "state");
-        Mockito.when(component.lookup(zip)).thenReturn(zipCode);
+        ZipCode zipCode = new ZipCode("01254600", "street", "district", "city", "state");
+        when(component.lookup(zip)).thenReturn(zipCode);
 
         //When
         ZipCode response = instance.find(zip);
@@ -39,34 +39,33 @@ public class ZipCodeServiceUnitTest {
         Assert.assertEquals(zipCode, response);
     }
 
-    @Test(expected = NotFoundException.class)
-    public void testFindByIdCaseNotFound() {
+    @Test(expected = NotFoundException.class) public void testFindCaseNotFound() {
         //Given
         String excMessage = "not found...";
         NotFoundException notFound = new NotFoundException(excMessage);
 
-        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(notFound);
+        when(component.lookup(Matchers.anyString())).thenThrow(notFound);
 
         //When
         instance.find("01254600");
     }
 
     @Test(expected = BadRequestException.class)
-    public void testFindByIdCaseBadRequest() {
+    public void testFindCaseBadRequest() {
         //Given
         String excMessage = "bad request...";
         BadRequestException badRequest = new BadRequestException(excMessage);
 
-        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(badRequest);
+        when(component.lookup(Matchers.anyString())).thenThrow(badRequest);
 
         //When
         instance.find("01254600");
     }
 
     @Test(expected = InternalServerErrorException.class)
-    public void testFindByIdCaseInternalServerError() {
+    public void testFindCaseInternalServerError() {
         //Given
-        Mockito.when(component.lookup(Matchers.anyString())).thenThrow(new InternalServerErrorException());
+        when(component.lookup(Matchers.anyString())).thenThrow(new InternalServerErrorException());
 
         //When
         instance.find("01254600");
