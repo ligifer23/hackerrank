@@ -36,14 +36,13 @@ public class ZipCodeServiceUnitTest {
         Mockito.when(component.find(zip)).thenReturn(zipCode);
 
         //When
-        ResponseEntity<ZipCode> response = instance.find(zip);
+        ZipCode response = instance.find(zip);
 
         //Then
-        Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assert.assertEquals(zipCode, response.getBody());
+        Assert.assertEquals(zipCode, response);
     }
 
-    @Test
+    @Test(expected = NotFoundException.class)
     public void testFindByIdCaseNotFound() {
         //Given
         String excMessage = "not found...";
@@ -53,14 +52,10 @@ public class ZipCodeServiceUnitTest {
         Mockito.when(component.find(Matchers.anyString())).thenThrow(notFound);
 
         //When
-        ResponseEntity<APIError> response = instance.find("01254600");
-
-        //Then
-        Assert.assertEquals(HttpStatus.valueOf(notFound.getStatus()), response.getStatusCode());
-        Assert.assertEquals(expectedError, response.getBody());
+        instance.find("01254600");
     }
 
-    @Test
+    @Test(expected = BadRequestException.class)
     public void testFindByIdCaseBadRequest() {
         //Given
         String excMessage = "bad request...";
@@ -70,43 +65,15 @@ public class ZipCodeServiceUnitTest {
         Mockito.when(component.find(Matchers.anyString())).thenThrow(badRequest);
 
         //When
-        ResponseEntity<APIError> response = instance.find("01254600");
-
-        //Then
-        Assert.assertEquals(HttpStatus.valueOf(badRequest.getStatus()), response.getStatusCode());
-        Assert.assertEquals(expectedError, response.getBody());
+        instance.find("01254600");
     }
 
-    @Test
-    public void testFindByIdCaseKnownInternalServerError() {
+    @Test(expected = InternalServerErrorException.class)
+    public void testFindByIdCaseInternalServerError() {
         //Given
-        String excMessage = "internal server error...";
-        InternalServerErrorException internalServerError = new InternalServerErrorException(excMessage);
-        APIError expectedError = APIError.of(internalServerError.getStatus(), excMessage);
-
-        Mockito.when(component.find(Matchers.anyString())).thenThrow(internalServerError);
-
-        //When
-        ResponseEntity<APIError> response = instance.find("01254600");
-
-        //Then
-        Assert.assertEquals(HttpStatus.valueOf(internalServerError.getStatus()), response.getStatusCode());
-        Assert.assertEquals(expectedError, response.getBody());
-    }
-
-    @Test
-    public void testFindByIdCaseUnknownInternalServerError() {
-        //Given
-        InternalServerErrorException internalServerErrorException = new InternalServerErrorException();
-        APIError expectedError = APIError.of(internalServerErrorException.getStatus());
-
         Mockito.when(component.find(Matchers.anyString())).thenThrow(new InternalServerErrorException());
 
         //When
-        ResponseEntity<APIError> response = instance.find("01254600");
-
-        //Then
-        Assert.assertEquals(HttpStatus.valueOf(internalServerErrorException.getStatus()), response.getStatusCode());
-        Assert.assertEquals(expectedError, response.getBody());
+        instance.find("01254600");
     }
 }
