@@ -11,7 +11,8 @@ $mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,s
 ##Exercício 1 - Serviço de BUSCA DE CEP
 
 ###URI /cep
-GET - **/cep/{ID}** - Buscar endereço por CEP
+
+- GET - **/cep/{ID}** - Buscar endereço por CEP
 
 ##Exercício 2 - Salvar endereço do usuário seguindo as regras de CRUD
 
@@ -30,10 +31,10 @@ GET - **/cep/{ID}** - Buscar endereço por CEP
 
 ###URIs /endereco
 
-GET - **/endereco/{ID}** - Buscar endereço
-POST - **/endereco** - Cadastrar endereço - *Requer body* - Retorna header 'Location'
-PUT - **/endereco/{ID}** - Atualizar endereço - *Requer body*
-DELETE - **/endereco/{ID}** - Deletar endereço
+- GET - **/endereco/{ID}** - Buscar endereço
+- POST - **/endereco** - Cadastrar endereço - *Requer body* - Retorna header 'Location'
+- PUT - **/endereco/{ID}** - Atualizar endereço - *Requer body*
+- DELETE - **/endereco/{ID}** - Deletar endereço
 
 
 ##Observações
