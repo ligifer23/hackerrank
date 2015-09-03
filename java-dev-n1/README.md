@@ -1,4 +1,4 @@
-#Spring Core + Spring Web + Spring Boot + Spring Data + H2 in-memory
+#Spring Core + Spring Web + Spring Boot + Spring Data + H2 in-memory + [rest-api-essentials](https://github.com/wellingtonmoreira/rest-api-essentials)
 * Os ceps disponiveis no in-memory são da cidade de São Paulo (dump de 2012)
 
 ##Run app - port 8080
