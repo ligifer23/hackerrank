@@ -2,11 +2,7 @@ package com.wmoreira.javadevn1.presentation.service;
 
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.ZipCode;
-import com.wmoreira.javadevn1.exception.APIException;
-import com.wmoreira.javadevn1.presentation.service.error.APIError;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

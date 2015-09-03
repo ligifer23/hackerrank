@@ -2,17 +2,15 @@ package com.wmoreira.javadevn1.presentation.service;
 
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.ZipCode;
-import com.wmoreira.javadevn1.exception.BadRequestException;
-import com.wmoreira.javadevn1.exception.InternalServerErrorException;
-import com.wmoreira.javadevn1.exception.NotFoundException;
 import com.wmoreira.javadevn1.presentation.service.error.APIError;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Matchers;
 import org.mockito.Mockito;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.wmoreira.api.core.exception.BadRequestException;
+import org.wmoreira.api.core.exception.InternalServerErrorException;
+import org.wmoreira.api.core.exception.NotFoundException;
 
 /**
  * @author wellington.362@gmail.com

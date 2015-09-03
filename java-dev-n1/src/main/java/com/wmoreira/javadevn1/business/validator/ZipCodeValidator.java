@@ -1,7 +1,5 @@
 package com.wmoreira.javadevn1.business.validator;
 
-import com.wmoreira.javadevn1.exception.BadRequestException;
-
 import java.util.regex.Pattern;
 
 /**

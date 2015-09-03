@@ -3,11 +3,11 @@ package com.wmoreira.javadevn1.business.component.impl;
 import com.wmoreira.javadevn1.business.component.ZipCodeComponent;
 import com.wmoreira.javadevn1.business.entity.ZipCode;
 import com.wmoreira.javadevn1.business.validator.ZipCodeValidator;
-import com.wmoreira.javadevn1.exception.BadRequestException;
-import com.wmoreira.javadevn1.exception.NotFoundException;
 import com.wmoreira.javadevn1.integration.repository.ZipCodeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.wmoreira.api.core.exception.BadRequestException;
+import org.wmoreira.api.core.exception.NotFoundException;
 
 import java.util.Optional;
 

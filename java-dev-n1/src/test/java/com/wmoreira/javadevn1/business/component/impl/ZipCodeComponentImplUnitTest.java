@@ -1,12 +1,12 @@
 package com.wmoreira.javadevn1.business.component.impl;
 
 import com.wmoreira.javadevn1.business.entity.ZipCode;
-import com.wmoreira.javadevn1.exception.NotFoundException;
 import com.wmoreira.javadevn1.integration.repository.ZipCodeRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.wmoreira.api.core.exception.NotFoundException;
 
 /**
  * @author wellington.362@gmail.com
