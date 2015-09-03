@@ -26,9 +26,6 @@ GET - **/cep/{ID}** - onde ID é o CEP no formato 00000000 (size 8)
 
 Esta aplicação foi desenvolvida no padrão Presentation-Business-Integration, o que faz com que a mesma não tenha um aspecto monolítico, conforme a imagem abaixo descreve:
 
-
-(...)It's also worth emphasizing that putting behavior into the domain objects should not contradict **the solid approach of using layering to separate domain logic from such things as persistence and presentation responsibilities**. The logic that should be in a domain object is domain logic - validations, calculations, business rules - whatever you like to call it. (There are cases when you make an argument for putting data source or presentation logic in a domain object, but that's orthogonal to my view of anemia.)(...)
-
 ![](./readme/img/Diagrama-separacao.png)
 
 -	Presentation - Literalmente a camada de apresentação, nesta camada estão contidos os **Services** da aplicação (Também chamados de Entry-points, pode ser REST, SOAP, RPC, etc.)
@@ -36,6 +33,9 @@ Esta aplicação foi desenvolvida no padrão Presentation-Business-Integration, 
 -	Integration - Os **Repositories** integram todo ou qualquer tipo de recurso externo, sendo eles RDBMS, NoSQL, Webservices, etc.
 
 Esta padronização não tem como objetivo separar regras de negócio de suas entidades, deixaria a aplicação num modelo **anêmico**! A citação do artigo [Anemic Domain Model](http://www.martinfowler.com/bliki/AnemicDomainModel.html) de *Martin Fowler* em destaque abaixo retrata o objetivo:
+
+(...)It's also worth emphasizing that putting behavior into the domain objects should not contradict **the solid approach of using layering to separate domain logic from such things as persistence and presentation responsibilities**. The logic that should be in a domain object is domain logic - validations, calculations, business rules - whatever you like to call it. (There are cases when you make an argument for putting data source or presentation logic in a domain object, but that's orthogonal to my view of anemia.)(...)
+
 
 Esta arquitetura auxilia na aplicação de pelo menos 2 princípios [**S**OLI**D**](https://scotch.io/bar-talk/s-o-l-i-d-the-first-five-principles-of-object-oriented-design) adequadamente:
 -	S - Single-responsibility - Salvos os Components, Services e Repositories não possuem mais de uma responsabilidade.
