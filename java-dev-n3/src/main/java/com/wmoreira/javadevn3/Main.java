@@ -36,8 +36,7 @@ public class Main {
         StringBuilder repeated = new StringBuilder();
         while (stream.hasNext()) {
             String c = String.valueOf(stream.getNext());
-            int cIndex = sb.indexOf(c, 0);
-            if (cIndex > -1 && repeated.indexOf(c) == -1) {
+            if (sb.indexOf(c, 0) > -1 && repeated.indexOf(c) == -1) {
                 repeated.append(c);
             }
             sb.append(c);
