@@ -23,6 +23,7 @@ $mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,s
 	{
       "street" : "Rua teste",
       "number" : 10,
+      "complement" : "Complemento",
       "district" : "Bela Vista",
       "city" : "São Paulo",
       "state" : "SP",
